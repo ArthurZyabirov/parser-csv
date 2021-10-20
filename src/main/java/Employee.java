@@ -1,5 +1,7 @@
+import org.w3c.dom.NamedNodeMap;
+
 public class Employee {
-    public long id;
+    public int id;
     public String firstName;
     public String lastName;
     public String country;
@@ -9,12 +11,14 @@ public class Employee {
 
     }
 
-    public Employee(long id, String firstName, String lastName, String country, int age) {
+    public Employee(int id, String firstName, String lastName, String country, int age) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.country = country;
         this.age = age;
     }
+
+
 
 }
