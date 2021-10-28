@@ -23,24 +23,24 @@ public class Main {
         String fileName = "data.csv";
         List<Employee> list = parseCSV(columnMapping, fileName);
         String json = listToJson(list);
-        File file = writeString(json);
+        File file = writeString(json,"data.json");
         List<Employee> list2 = parseXML("data.xml");
         String json2 = listToJson(list2);
-        File file2 = writeString2(json);
+        File file2 = writeString(json, "data2.json");
 
 
 
 
     }
 
-    private static File writeString2(String json) {
-        File file = new File("main" + File.separator + "data2.json");
+    private static File writeString(String json, String filename) {
+        File file = new File("main" + File.separator + filename);
         try {
             file.createNewFile();
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
-        try (FileWriter writer = new FileWriter("data2.json")) {
+        try (FileWriter writer = new FileWriter(filename)) {
             writer.write(json);
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
@@ -80,24 +80,7 @@ public class Main {
         }
         return list;
     }
-
-
-
-    public static File writeString(String json) {
-        File file = new File("main" + File.separator + "data.json");
-        try {
-            file.createNewFile();
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-        try (FileWriter writer = new FileWriter("data.json")) {
-            writer.write(json);
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return file;
-
-    }
+    
 
     public static <T> String listToJson(List<Employee> list) {
         GsonBuilder builder = new GsonBuilder();
